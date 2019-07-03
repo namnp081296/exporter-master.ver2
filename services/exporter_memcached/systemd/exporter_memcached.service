@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter Memcached
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_memcached --web.listen-address:11124
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

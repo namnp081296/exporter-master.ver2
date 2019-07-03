@@ -1,0 +1,22 @@
+exporters:
+
+#node
+- url: http://localhost:11020/metrics
+#memcached
+- url: http://localhost:11124/metrics
+#couchbase
+- url: http://localhost:11022/metrics
+#mysqld
+- url: http://localhost:11026/metrics
+#redis
+- url: http://localhost:11028/metrics
+#nginx
+- url: http://localhost:11030/metrics
+#haproxy
+- url: http://localhost:11032/metrics
+#kafka
+- url: http://localhost:11034/metrics
+#php_fpm
+- url: http://localhost:11036/metrics
+#mongodb
+- url: http://localhost:11038/metrics

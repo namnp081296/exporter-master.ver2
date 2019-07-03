@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter Merge
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_merge --config.file=/etc/prometheus/var/exporter_merge.yaml --listen-port 11011
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

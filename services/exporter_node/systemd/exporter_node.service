@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter Node
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_node --web.listen-address=:11020
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

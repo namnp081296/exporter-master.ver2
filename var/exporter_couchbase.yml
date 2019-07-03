@@ -1,0 +1,22 @@
+---
+  
+web:
+  listenAddress: :11022
+  telemetryPath: /metrics
+  timeout: 10s
+
+db:
+  user: Administrator
+  password: 
+  uri: http://localhost:8091
+  timeout: 10s
+
+log:
+  level: info
+  format: text
+
+scrape:
+  cluster: true
+  node: true
+  bucket: true
+  xdcr: true

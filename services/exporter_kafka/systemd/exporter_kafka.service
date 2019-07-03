@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter Kafka
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_kafka --web.listen-address:11034
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

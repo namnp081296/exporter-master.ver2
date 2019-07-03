@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter MySQL
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_mysqld --config.my-cnf /etc/.my.cnf --web.listen-address=:11026
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

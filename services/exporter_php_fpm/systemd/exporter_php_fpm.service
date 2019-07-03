@@ -1,0 +1,14 @@
+[Unit]
+Description=Exporter PHP-FPM
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/etc/prometheus/sbin/exporter_php_fpm --endpoint=http://127.0.0.1:9000/status --addr=127.0.0.1:11036
+ExecStop    = kill -INT $MAINPID
+ExecReload  = kill -TERM $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
